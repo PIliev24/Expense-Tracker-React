@@ -11,7 +11,7 @@ export const AddTransaction = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (text === "" || amount === 0) {
+    if (text === "" || amount == 0) {
       Swal.fire({
         title: "Error!",
         text:

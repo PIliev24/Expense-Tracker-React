@@ -5,6 +5,7 @@ import { IncomeExpenses } from "./components/IncomeExpenses";
 import { GlobalProvider } from "./context/GlobalState";
 import TransactionList from "./components/TransactionList";
 import AddTransaction from "./components/AddTransaction";
+import MessageCheckbox from "./components/MessageCheckbox";
 
 import "./App.css";
 
@@ -17,6 +18,7 @@ function App() {
         <IncomeExpenses />
         <TransactionList />
         <AddTransaction />
+        <MessageCheckbox />
       </div>
     </GlobalProvider>
   );

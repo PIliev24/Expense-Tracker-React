@@ -3,13 +3,13 @@ import { GlobalContext } from "../context/GlobalState";
 const Swal = require("sweetalert2");
 
 export default function Balance() {
-  const { transactions } = useContext(GlobalContext);
+  const { transactions, messageCheckbox } = useContext(GlobalContext);
 
   const amounts = transactions.map((transaction) => transaction.amount);
 
   const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
 
-  if (total < 0) {
+  if (total < 0 && messageCheckbox === true) {
     Swal.fire({
       icon: "error",
       title: "Oops...",

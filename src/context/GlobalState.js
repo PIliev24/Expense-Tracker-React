@@ -4,6 +4,7 @@ import AppReducer from "./AppReducer";
 // Initial state
 const initialState = {
   transactions: [],
+  messageCheckbox: false,
 };
 
 // Create context
@@ -14,6 +15,13 @@ export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   // Actions
+  function checkboxClick(id) {
+    dispatch({
+      type: "CLICK_CHECKBOX",
+      payload: id,
+    });
+  }
+  
   function deleteTransaction(id) {
     dispatch({
       type: "DELETE_TRANSACTION",
@@ -32,6 +40,8 @@ export const GlobalProvider = ({ children }) => {
     <GlobalContext.Provider
       value={{
         transactions: state.transactions,
+        messageCheckbox : state.messageCheckbox,
+        checkboxClick,
         deleteTransaction,
         addTransaction,
       }}

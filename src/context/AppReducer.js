@@ -12,6 +12,11 @@ export default (state, action) => {
         ...state,
         transactions: [action.payload, ...state.transactions],
       };
+    case "CLICK_CHECKBOX":
+      return {
+        ...state,
+        messageCheckbox: action.payload,
+      };
     default:
       return state;
   }

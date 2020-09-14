@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
+const Swal = require("sweetalert2");
 
-export const AddTransaction = () => {
+export const AddTransaction = (props) => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
 
@@ -10,13 +11,23 @@ export const AddTransaction = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    const newTransaction = {
-      id: Math.floor(Math.random() * 100000000),
-      text,
-      amount: +amount,
-    };
+    if (text === "" || amount === 0) {
+      Swal.fire({
+        title: "Error!",
+        text:
+          "You cannot add a transaction without a name or with an amount of 0!",
+        icon: "error",
+        confirmButtonText: "Cool",
+      });
+    } else {
+      const newTransaction = {
+        id: Math.floor(Math.random() * 100000000),
+        text,
+        amount: +amount,
+      };
 
-    addTransaction(newTransaction);
+      addTransaction(newTransaction);
+    }
   };
 
   return (
